@@ -9,7 +9,7 @@ gem 'pg'
 
 gem 'devise'
 
-gem "activeadmin", :git => "git://github.com/gregbell/active_admin.git"
+gem 'activeadmin', github: 'activeadmin', branch: '0-6-stable'
 
 gem 'nokogiri'
 
