@@ -3,5 +3,5 @@
     <%= current_user.email %>
 <% else %>
     <%= link_to t(:entrar), new_user_session_path %> ou
-    <%= link_to t(:cadastre), new_registration_path(resource_name) %><br />
+    <%= link_to t(:cadastre), new_registration_path(resource_name) %>
 <% end %>
