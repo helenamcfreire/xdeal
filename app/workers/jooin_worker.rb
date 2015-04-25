@@ -20,6 +20,6 @@ class JooinWorker
       ).first_or_create
 
     end
-    
+
   end
 end
