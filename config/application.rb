@@ -13,7 +13,7 @@ module Xdeal
   class Application < Rails::Application
 
     #Heroku
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
 
     config.assets.compile = true
     # Settings in config/environments/* take precedence over those specified here.
