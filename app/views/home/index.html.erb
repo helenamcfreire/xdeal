@@ -1,6 +1,16 @@
-<% if user_signed_in? %>
-    <%= link_to 'Sair', destroy_user_session_path, :method => :delete %>
-    <%= current_user.email %>
-<% else %>
-    <%= link_to 'Entrar', new_user_session_path %>
-<% end %>
+<div class="container">
+
+  <ul class="collection">
+    <%- @companies.each do |company| %>
+        <li class="collection-item avatar">
+          <img src="http://placehold.it/80x80" alt="" class="circle">
+          <span class="title"><%= company.name %></span>
+          <p><%= company.phone %> <br>
+            <%= company.site %>
+          </p>
+          <a href="#!" class="secondary-content"><i class="mdi-editor-attach-money"></i><%= company.price %></a>
+        </li>
+    <% end %>
+  </ul>
+
+</div>
