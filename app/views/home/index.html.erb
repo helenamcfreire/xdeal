@@ -1,16 +1,141 @@
-<div class="container">
+<div class="principal">
 
-  <ul class="collection">
-    <%- @companies.each do |company| %>
-        <li class="collection-item avatar">
-          <img src="http://placehold.it/80x80" alt="" class="circle">
-          <span class="title"><%= company.name %></span>
-          <p><%= company.phone %> <br>
-            <%= company.site %>
-          </p>
-          <a href="#!" class="secondary-content"><i class="mdi-editor-attach-money"></i><%= company.price %></a>
-        </li>
-    <% end %>
-  </ul>
+  <div class="alerta">
+    <img src="/assets/alerta.jpg" />
+    TODOS OS VALORES ESTÃO SUJEITOS A ALTERAÇÃO E SÃO ATUALIZADOS PELAS PRÓPRIAS CASAS DE CÂMBIO
+  </div>
+
+  <div class="lado_esquerdo">
+
+    <div class="bloco_casas_cambio">
+
+      <!-- picker -->
+
+      <div class="filtros">
+        <div class="moedas">
+          <div class="filtro_moeda" onclick="filtrar('dolar', 'moeda')">US$</div>
+          <div class="filtro_moeda" onclick="filtrar('euro', 'moeda')">Euro</div>
+          <div class="filtro_moeda" onclick="filtrar('libra', 'moeda')">Libra</div>
+          <div class="filtro_moeda" onclick="filtrar('peso', 'moeda')">Peso</div>
+        </div>
+
+        <div class="tipos_pagamento">
+          <div class="filtro_pagamento" onclick="filtrar('money', 'pagamento')">CASH</div>
+          <div class="filtro_pagamento" onclick="filtrar('visa', 'pagamento')">VISA TRAVEL MONEY</div>
+          <div class="filtro_pagamento" onclick="filtrar('master', 'pagamento')">MASTERCARD TRAVEL</div>
+        </div>
+
+        <div class="opcionais">
+          <div class="bloco_opcional">
+            <div class="filtro_opcional" onclick="filtrar('frete', 'opcional')"></div><span>FRETE</span>
+          </div>
+          <div class="bloco_opcional">
+            <div class="filtro_opcional" onclick="filtrar('iof', 'opcional')"></div><span>CALC. IOF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="listagem_casas_cambio">
+
+
+        <table class="casas_cambio" id="first_table">
+          <tbody>
+          </tbody>
+        </table>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+  <div class="lado_direito">
+
+
+  </div>
+
+
+
 
 </div>
+
+<script>
+
+  var json = {};
+  var moedas = [];
+  var opcionais = [];
+
+  function addOrRemoveFromArray(array, obj) {
+      if (array.indexOf(obj) == -1) {
+          array.push(obj);
+      } else {
+          var index = array.indexOf(obj);
+          array.splice(index, 1);
+      }
+  }
+
+  $( "div.filtros div" ).click(function() {
+      if ($(this).hasClass("filtro_moeda"))
+        $(this).toggleClass("filtro_moeda_selecionado");
+      else if ($(this).hasClass("filtro_pagamento")) {
+          $('.filtro_pagamento').removeClass('filtro_pagamento_selecionado');
+          $(this).toggleClass("filtro_pagamento_selecionado");
+      }
+      else if ($(this).hasClass("filtro_opcional"))
+          $(this).toggleClass("filtro_opcional_selecionado");
+  });
+
+  function filtrar(nome, tipo) {
+
+      if (tipo == 'moeda') {
+          addOrRemoveFromArray(moedas, nome);
+          json.moedas = moedas;
+      }
+
+      if (tipo == 'pagamento') {
+          json.pagamento = nome;
+      }
+
+      if (tipo == 'opcional') {
+          addOrRemoveFromArray(opcionais, nome);
+          json.opcionais = opcionais;
+      }
+
+  $.ajax({
+          contentType: 'application/json',
+          data: JSON.stringify(json),
+          dataType: 'json',
+          success: function(data){
+              //alert(data);
+              $("#first_table").find('tbody').html('');
+              $.each(data, function(i, item) {
+                  $("#first_table").find('tbody')
+                          .append($('<tr>')
+                                  .append($('<td style="width:60%">')
+                                          .text(data[i].name))
+                                  .append($('<td style="width:10%">')
+                                          .text(data[i].dolar))
+                                  .append($('<td style="width:10%">')
+                                          .text(data[i].euro))
+                                  .append($('<td style="width:10%">')
+                                          .text(data[i].libra))
+                                  .append($('<td style="width:10%">')
+                                          .text(data[i].peso))
+                  );
+              });
+
+          },
+          error: function(){
+              //  alert("Device control failed");
+          },
+          processData: false,
+          type: 'POST',
+          url: '/home/filter'
+      });
+  }
+
+
+
+</script>

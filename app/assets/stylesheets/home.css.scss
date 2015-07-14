@@ -1,3 +1,128 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.principal {
+  width: 960px;
+  margin: auto
+}
+
+.principal div.alerta {
+  font-size: 10px;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  height: 17px;
+  line-height: 17px;
+  vertical-align: top;
+}
+
+.topo {
+  height: 70px;
+  background-image: url("/assets/bg_topo.jpg");
+  background-repeat: repeat-x;
+  background-position: bottom;
+}
+
+.topo img {
+  position: absolute;
+  top: 33px;
+}
+
+.menu {
+  position: absolute;
+  right: 115px;
+  top: 32px;
+}
+
+.menu ul {
+  list-style: none
+}
+
+.menu ul li {
+  float: left;
+  padding-left: 20px
+}
+
+.bloco_casas_cambio {
+  width: 100%;
+  clear: both;
+  height: 225px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #000000;
+  border-top: 2px solid #000000;
+}
+
+.filtros {
+  width: 206px;
+  float: left;
+  text-align: center
+}
+
+.filtro_moeda, .filtro_moeda_selecionado {
+  padding: 5px 10px 5px 10px;
+  color: #ffffff;
+  background-color: #D1D1D1;
+  width: 73px;
+  float: left;
+  border-radius: 6px;
+  margin: 5px;
+  clear: right;
+  cursor: pointer;
+}
+
+.filtro_moeda_selecionado {
+  background-color: #33AC66;
+}
+
+.filtro_pagamento, .filtro_pagamento_selecionado {
+  padding: 5px 10px 5px 10px;
+  color: #ffffff;
+  background-color: #D1D1D1;
+  width: 87%;
+  float: left;
+  border-radius: 6px;
+  margin: 5px;
+  clear: right;
+  cursor: pointer;
+}
+
+.filtro_pagamento_selecionado {
+  background-color: #231F20;
+}
+
+.bloco_opcional {
+  float: left;
+  display: inline-flex;
+  clear: right
+}
+
+.bloco_opcional span {
+  height: 30px;
+  line-height: 30px;
+}
+
+.filtro_opcional, .filtro_opcional_selecionado {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #D1D1D1;
+  width: 5px;
+  border-radius: 6px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.filtro_opcional_selecionado {
+  background-color: #231F20
+}
+
+.listagem_casas_cambio {
+  width: 690px;
+  float: left;
+  height: 225px;
+  overflow: auto;
+}
+
+table.casas_cambio {
+  width: 100%
+}
+
+table.casas_cambio tr td {
+  border-bottom: 1px dotted #949494;
+  padding: 7px;
+}

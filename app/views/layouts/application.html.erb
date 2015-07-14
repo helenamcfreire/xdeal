@@ -8,34 +8,19 @@
 </head>
 <body>
 
-<nav class="light-blue lighten-1" role="navigation">
-  <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">XDeal</a>
-    <ul class="right hide-on-med-and-down">
-        <% if user_signed_in? %>
-          <li>
-            <%= link_to 'Sair', destroy_user_session_path, :method => :delete %>
-          </li>
-            <%= current_user.email %>
-        <% else %>
-          <li>
-            <%= link_to 'Entrar', new_user_session_path %>
-          </li>
-        <% end %>
-    </ul>
-
-    <ul id="nav-mobile" class="side-nav">
-      <li>
-        <% if user_signed_in? %>
-            <%= link_to 'Sair', destroy_user_session_path, :method => :delete %>
-            <%= current_user.email %>
-        <% else %>
-            <%= link_to 'Entrar', new_user_session_path %>
-        <% end %>
-      </li>
-    </ul>
-    <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+<div class="topo">
+  <div class="principal">
+    <img src="/assets/logo.jpg" />
+    <div class="menu">
+      <ul>
+        <li>SOBRE O XDEAL</li>
+        <li>ENTENDA A CONVERSÃO</li>
+        <li>TERMOS DE USO</li>
+        <li>CONTATO</li>
+      </ul>
+    </div>
   </div>
-</nav>
+</div>
 
 <%= yield %>
 

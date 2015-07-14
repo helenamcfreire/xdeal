@@ -7,6 +7,8 @@ Xdeal::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   root :to => "home#index"
+
+  match ':controller(/:action(/:id))(.:format)'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
