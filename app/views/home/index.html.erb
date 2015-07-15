@@ -7,46 +7,10 @@
 
   <div class="lado_esquerdo">
 
-    <div class="bloco_casas_cambio">
-
-      <!-- picker -->
-
-      <div class="filtros">
-        <div class="moedas">
-          <div class="filtro_moeda" onclick="filtrar('dolar', 'moeda')">US$</div>
-          <div class="filtro_moeda" onclick="filtrar('euro', 'moeda')">Euro</div>
-          <div class="filtro_moeda" onclick="filtrar('libra', 'moeda')">Libra</div>
-          <div class="filtro_moeda" onclick="filtrar('peso', 'moeda')">Peso</div>
-        </div>
-
-        <div class="tipos_pagamento">
-          <div class="filtro_pagamento" onclick="filtrar('money', 'pagamento')">CASH</div>
-          <div class="filtro_pagamento" onclick="filtrar('visa', 'pagamento')">VISA TRAVEL MONEY</div>
-          <div class="filtro_pagamento" onclick="filtrar('master', 'pagamento')">MASTERCARD TRAVEL</div>
-        </div>
-
-        <div class="opcionais">
-          <div class="bloco_opcional">
-            <div class="filtro_opcional" onclick="filtrar('frete', 'opcional')"></div><span>FRETE</span>
-          </div>
-          <div class="bloco_opcional">
-            <div class="filtro_opcional" onclick="filtrar('iof', 'opcional')"></div><span>CALC. IOF</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="listagem_casas_cambio">
 
 
-        <table class="casas_cambio" id="first_table">
-          <tbody>
-          </tbody>
-        </table>
-
-
-      </div>
-
-
+    <div class="add_more" onclick="addMore()">
+        +
     </div>
 
   </div>
@@ -57,15 +21,31 @@
   </div>
 
 
-
-
 </div>
 
 <script>
 
   var json = {};
-  var moedas = [];
-  var opcionais = [];
+
+  function addMore() {
+      $.ajax({
+          url: "cambio.html",
+          success: function (data) {
+              var json2 = {};
+              json2.moedas = [];
+              json2.opcionais = [];
+
+              var min = 100;
+              var max = 100000;
+              var id = "id_" + Math.floor(Math.random()*(max-min+1)+min);
+
+              localStorage.setItem(id, JSON.stringify(json2));
+
+              $('.lado_esquerdo').prepend("<div id='"+id+"'>"+data+"</div>");
+          },
+          dataType: 'html'
+      });
+  }
 
   function addOrRemoveFromArray(array, obj) {
       if (array.indexOf(obj) == -1) {
@@ -76,22 +56,26 @@
       }
   }
 
-  $( "div.filtros div" ).click(function() {
-      if ($(this).hasClass("filtro_moeda"))
-        $(this).toggleClass("filtro_moeda_selecionado");
-      else if ($(this).hasClass("filtro_pagamento")) {
-          $('.filtro_pagamento').removeClass('filtro_pagamento_selecionado');
-          $(this).toggleClass("filtro_pagamento_selecionado");
-      }
-      else if ($(this).hasClass("filtro_opcional"))
-          $(this).toggleClass("filtro_opcional_selecionado");
+  $(document.body).on('click', 'div.filtros div' ,function(){
+         // alert('sim, entrei');
+          if ($(this).hasClass("filtro_moeda"))
+              $(this).toggleClass("filtro_moeda_selecionado");
+          else if ($(this).hasClass("filtro_pagamento")) {
+              $(this).parent().find('.filtro_pagamento').removeClass('filtro_pagamento_selecionado');
+              $(this).toggleClass("filtro_pagamento_selecionado");
+          }
+          else if ($(this).hasClass("filtro_opcional"))
+              $(this).toggleClass("filtro_opcional_selecionado");
   });
 
-  function filtrar(nome, tipo) {
+  function filtrar(nome, tipo, obj) {
+
+      var divpai = obj.closest('div[id^="id_"]');
+      var keyjson = divpai.id;
+      json = JSON.parse(localStorage.getItem(keyjson));
 
       if (tipo == 'moeda') {
-          addOrRemoveFromArray(moedas, nome);
-          json.moedas = moedas;
+          addOrRemoveFromArray(json.moedas, nome);
       }
 
       if (tipo == 'pagamento') {
@@ -99,19 +83,21 @@
       }
 
       if (tipo == 'opcional') {
-          addOrRemoveFromArray(opcionais, nome);
-          json.opcionais = opcionais;
+          addOrRemoveFromArray(json.opcionais, nome);
       }
 
-  $.ajax({
+      localStorage.setItem(keyjson, JSON.stringify(json));
+      alert(JSON.stringify(json));
+
+      $.ajax({
           contentType: 'application/json',
           data: JSON.stringify(json),
           dataType: 'json',
           success: function(data){
               //alert(data);
-              $("#first_table").find('tbody').html('');
+              $( "div#" + keyjson + " table").find('tbody').html('');
               $.each(data, function(i, item) {
-                  $("#first_table").find('tbody')
+                  $( "div#" + keyjson + " table").find('tbody')
                           .append($('<tr>')
                                   .append($('<td style="width:60%">')
                                           .text(data[i].name))
@@ -135,7 +121,5 @@
           url: '/home/filter'
       });
   }
-
-
 
 </script>

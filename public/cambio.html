@@ -1,0 +1,46 @@
+<div class="bloco_casas_cambio">
+
+    <!-- picker -->
+
+    <div class="filtros">
+        <div class="moedas">
+            <div class="filtro_moeda" onclick="filtrar('dolar', 'moeda', this)">US$</div>
+            <div class="filtro_moeda" onclick="filtrar('euro', 'moeda', this)">Euro</div>
+            <div class="filtro_moeda" onclick="filtrar('libra', 'moeda', this)">Libra</div>
+            <div class="filtro_moeda" onclick="filtrar('peso', 'moeda', this)">Peso</div>
+        </div>
+
+        <div class="tipos_pagamento">
+            <div class="filtro_pagamento" onclick="filtrar('money', 'pagamento', this)">CASH</div>
+            <div class="filtro_pagamento" onclick="filtrar('visa', 'pagamento', this)">VISA TRAVEL MONEY</div>
+            <div class="filtro_pagamento" onclick="filtrar('master', 'pagamento', this)">MASTERCARD TRAVEL</div>
+        </div>
+
+        <div class="opcionais">
+            <div class="bloco_opcional">
+                <div class="filtro_opcional" onclick="filtrar('frete', 'opcional', this)"></div><span>FRETE</span>
+            </div>
+            <div class="bloco_opcional">
+                <div class="filtro_opcional" onclick="filtrar('iof', 'opcional', this)"></div><span>CALC. IOF</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="listagem_casas_cambio">
+
+
+        <table class="casas_cambio" id="first_table">
+            <tbody>
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</div>
+
+<script>
+
+
+</script>
