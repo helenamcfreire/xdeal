@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4673c36f-b169-4a1e-800f-d475b055a477" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="xdeal.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -38,14 +36,14 @@
       <file leaf-file-name="index.html.erb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58441556" vertical-offset="1020" max-vertical-offset="1950">
-              <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.83858997" vertical-offset="1423" max-vertical-offset="2220">
+              <caret line="125" column="41" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="41" />
               <folding>
-                <marker date="1436970070000" expanded="true" signature="2711:2720" placeholder="..." />
-                <marker date="1436970070000" expanded="true" signature="2844:2853" placeholder="..." />
-                <marker date="1436970070000" expanded="true" signature="2978:2987" placeholder="..." />
-                <marker date="1436970070000" expanded="true" signature="3111:3120" placeholder="..." />
-                <marker date="1436970070000" expanded="true" signature="3245:3254" placeholder="..." />
+                <marker date="1436989395000" expanded="true" signature="2707:2716" placeholder="..." />
+                <marker date="1436989395000" expanded="true" signature="2840:2849" placeholder="..." />
+                <marker date="1436989395000" expanded="true" signature="3042:3051" placeholder="..." />
+                <marker date="1436989395000" expanded="true" signature="3242:3251" placeholder="..." />
+                <marker date="1436989395000" expanded="true" signature="3444:3453" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -61,21 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.css.scss" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.541666" vertical-offset="1571" max-vertical-offset="2145">
-              <caret line="136" column="18" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="home_controller.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+              <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -109,10 +97,10 @@
         <option value="$PROJECT_DIR$/db/migrate/20150425202739_create_companies.rb" />
         <option value="$PROJECT_DIR$/app/models/company.rb" />
         <option value="$PROJECT_DIR$/app/workers/jooin_worker.rb" />
-        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/home.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/geral.js" />
         <option value="$PROJECT_DIR$/public/cambio.html" />
+        <option value="$PROJECT_DIR$/app/controllers/home_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/home/index.html.erb" />
       </list>
     </option>
@@ -638,11 +626,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="315">
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding>
-            <marker date="1436970070000" expanded="true" signature="2711:2720" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2844:2853" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2978:2987" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3111:3120" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3245:3254" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2707:2716" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2840:2849" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3042:3051" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3242:3251" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3444:3453" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -668,11 +656,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="315">
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding>
-            <marker date="1436970070000" expanded="true" signature="2711:2720" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2844:2853" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2978:2987" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3111:3120" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3245:3254" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2707:2716" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2840:2849" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3042:3051" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3242:3251" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3444:3453" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -698,11 +686,11 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="315">
           <caret line="3" column="7" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
           <folding>
-            <marker date="1436970070000" expanded="true" signature="2711:2720" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2844:2853" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2978:2987" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3111:3120" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3245:3254" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2707:2716" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2840:2849" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3042:3051" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3242:3251" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3444:3453" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -994,22 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.541666" vertical-offset="1571" max-vertical-offset="2145">
-          <caret line="136" column="18" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/application.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
@@ -1017,6 +989,14 @@
           <folding>
             <element signature="n#!!doc" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/home.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8051948" vertical-offset="1606" max-vertical-offset="2145">
+          <caret line="136" column="18" selection-start-line="136" selection-start-column="18" selection-end-line="136" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1028,16 +1008,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/home_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
+          <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/home/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58441556" vertical-offset="1020" max-vertical-offset="1950">
-          <caret line="89" column="34" selection-start-line="89" selection-start-column="34" selection-end-line="89" selection-end-column="34" />
+        <state vertical-scroll-proportion="0.83858997" vertical-offset="1423" max-vertical-offset="2220">
+          <caret line="125" column="41" selection-start-line="125" selection-start-column="40" selection-end-line="125" selection-end-column="41" />
           <folding>
-            <marker date="1436970070000" expanded="true" signature="2711:2720" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2844:2853" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="2978:2987" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3111:3120" placeholder="..." />
-            <marker date="1436970070000" expanded="true" signature="3245:3254" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2707:2716" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="2840:2849" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3042:3051" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3242:3251" placeholder="..." />
+            <marker date="1436989395000" expanded="true" signature="3444:3453" placeholder="..." />
           </folding>
         </state>
       </provider>

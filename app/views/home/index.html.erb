@@ -87,7 +87,6 @@
       }
 
       localStorage.setItem(keyjson, JSON.stringify(json));
-      alert(JSON.stringify(json));
 
       $.ajax({
           contentType: 'application/json',
@@ -98,20 +97,39 @@
               $( "div#" + keyjson + " table").find('tbody').html('');
               $.each(data, function(i, item) {
                   $( "div#" + keyjson + " table").find('tbody')
-                          .append($('<tr>')
+                          .append($('<tr class="tr_moeda_'+keyjson+i+'">')
                                   .append($('<td style="width:60%">')
                                           .text(data[i].name))
-                                  .append($('<td style="width:10%">')
+                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' dolar_'+keyjson+'" style="display:none">')
                                           .text(data[i].dolar))
-                                  .append($('<td style="width:10%">')
+                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' euro_'+keyjson+'" style="display:none">')
                                           .text(data[i].euro))
-                                  .append($('<td style="width:10%">')
+                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' libra_'+keyjson+'" style="display:none">')
                                           .text(data[i].libra))
-                                  .append($('<td style="width:10%">')
+                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' peso_'+keyjson+'" style="display:none">')
                                           .text(data[i].peso))
                   );
-              });
 
+                  var moedas = json.moedas;
+                  $('.td_moeda_'+keyjson).hide();
+                  $.each(moedas, function(j, item) {
+                      //alert(moedas[i]);
+                      if (moedas[j] == "dolar") {
+                          if (data[i].dolar == "0,00 US$") { $('.tr_moeda_'+keyjson+i).hide() }
+                          $('.dolar_'+keyjson).show();
+                      } else if (moedas[j] == "euro") {
+                          if (data[i].euro == "0,00 €") { $('.tr_moeda_'+keyjson+i).hide() }
+                          $('.euro_'+keyjson).show();
+                      } else if (moedas[j] == "libra") {
+                          if (data[i].libra == "0,00 £") { $('.tr_moeda_'+keyjson+i).hide() }
+                          $('.libra_'+keyjson).show();
+                      } else if (moedas[j] == "peso") {
+                          if (data[i].peso == "0,00 $") { $('.tr_moeda_'+keyjson+i).hide() }
+                          $('.peso_'+keyjson).show();
+                      }
+                  });
+
+              });
           },
           error: function(){
               //  alert("Device control failed");

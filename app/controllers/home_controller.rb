@@ -15,7 +15,7 @@ class HomeController < ApplicationController
        'dolar' =>  ActionController::Base.helpers.number_to_currency(company["#{params['pagamento']}_dolar"], unit: "US$", separator: ",", delimiter: "", format: "%n %u"),
        'euro'  =>  ActionController::Base.helpers.number_to_currency(company["#{params['pagamento']}_euro"], unit: "€", separator: ",", delimiter: "", format: "%n %u"),
        'libra' =>  ActionController::Base.helpers.number_to_currency(company["#{params['pagamento']}_libra"], unit: "£", separator: ",", delimiter: "", format: "%n %u"),
-       'peso'  =>  ActionController::Base.helpers.number_to_currency(company["#{params['pagamento']}_peso"], unit: "?", separator: ",", delimiter: "", format: "%n %u")
+       'peso'  =>  ActionController::Base.helpers.number_to_currency(company["#{params['pagamento']}_peso"], unit: "$", separator: ",", delimiter: "", format: "%n %u")
       }
     end
     render :json => json
