@@ -1,0 +1,21 @@
+<%= semantic_form_for @company, :url => url_for(:action => "update/#{@company.id}") do |f| %>
+    <%= f.inputs :name, :money_dolar, :visa_dolar, :master_dolar, :money_euro, :visa_euro, :master_euro,
+                 :money_libra, :visa_libra, :master_libra, :money_peso, :visa_peso, :master_peso %>
+    <%= f.actions %>
+<% end %>
+
+
+<style>
+
+  fieldset.inputs {
+      width: 960px;
+      margin: auto;
+      margin-top: 60px;
+      padding: 50px;
+  }
+
+  form {
+      margin-bottom: 50px!important;
+  }
+
+</style>

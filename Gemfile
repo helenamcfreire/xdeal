@@ -13,6 +13,8 @@ gem 'activeadmin', github: 'activeadmin', branch: '0-6-stable'
 
 gem 'nokogiri'
 
+gem 'formtastic', '~> 2.3.1'
+
 
 # Gems used only for assets and not required
 # in production environments by default.

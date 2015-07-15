@@ -9,6 +9,10 @@ Xdeal::Application.routes.draw do
   root :to => "home#index"
 
   match ':controller(/:action(/:id))(.:format)'
+
+  Rails.application.routes.draw do
+    resources :company
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
