@@ -9,7 +9,7 @@
 
 
 
-    <div class="add_more" onclick="addMore()">
+    <div class="add_more" onclick="addBloco('', '', false)">
         +
     </div>
 
@@ -25,9 +25,26 @@
 
 <script>
 
+    $(document).ready(function() {
+        for (var i = 0; i < localStorage.length; i++){
+            var json = JSON.parse(localStorage.getItem(localStorage.key(i)));
+            var keyjson = localStorage.key(i);
+            addBloco(json, keyjson, true);
+        }
+    });
+
+    function markFilters(json, keyjson) {
+        var moedas = json.moedas;
+        $.each(moedas, function(j, item) {
+            $("div#" + keyjson + " ."+moedas[j]).toggleClass("filtro_moeda_selecionado");
+        });
+        var pagamento = json.pagamento;
+        $("div#" + keyjson + " ."+pagamento).toggleClass("filtro_pagamento_selecionado");
+    }
+
   var json = {};
 
-  function addMore() {
+  function addBloco(json, keyjson, onReady) {
       $.ajax({
           url: "cambio.html",
           success: function (data) {
@@ -35,13 +52,28 @@
               json2.moedas = [];
               json2.opcionais = [];
 
-              var min = 100;
-              var max = 100000;
-              var id = "id_" + Math.floor(Math.random()*(max-min+1)+min);
+              var id = "";
+              if (onReady) {
+                  id = keyjson;
+              } else {
+                  var min = 100;
+                  var max = 100000;
+                  id = "id_" + Math.floor(Math.random()*(max-min+1)+min);
 
-              localStorage.setItem(id, JSON.stringify(json2));
+                  localStorage.setItem(id, JSON.stringify(json2));
+              }
 
-              $('.lado_esquerdo').prepend("<div id='"+id+"'>"+data+"</div>");
+              if($(".bloco_casas_cambio").length == 0) {
+                  $('.lado_esquerdo').prepend("<div id='"+id+"'>"+data+"</div>");
+              } else {
+                  $(".bloco_casas_cambio").last().closest('div[id^="id_"]').after("<div id='"+id+"'>"+data+"</div>");
+              }
+
+              if (localStorage.length != 0) {
+                  markFilters(json, keyjson);
+                  buscarCasasDeCambio(json, keyjson);
+              }
+
           },
           dataType: 'html'
       });
@@ -57,16 +89,39 @@
   }
 
   $(document.body).on('click', 'div.filtros div' ,function(){
-         // alert('sim, entrei');
-          if ($(this).hasClass("filtro_moeda"))
-              $(this).toggleClass("filtro_moeda_selecionado");
-          else if ($(this).hasClass("filtro_pagamento")) {
-              $(this).parent().find('.filtro_pagamento').removeClass('filtro_pagamento_selecionado');
-              $(this).toggleClass("filtro_pagamento_selecionado");
-          }
-          else if ($(this).hasClass("filtro_opcional"))
-              $(this).toggleClass("filtro_opcional_selecionado");
+      if ($(this).hasClass("filtro_moeda"))
+          $(this).toggleClass("filtro_moeda_selecionado");
+      else if ($(this).hasClass("filtro_pagamento")) {
+          $(this).parent().find('.filtro_pagamento').removeClass('filtro_pagamento_selecionado');
+          $(this).toggleClass("filtro_pagamento_selecionado");
+      }
+     // else if ($(this).hasClass("filtro_opcional"))
+     //    $(this).toggleClass("filtro_opcional_selecionado");
   });
+
+  $(document.body).on('click', '.setinha' ,function(){
+      if ($(this).attr('src').indexOf('seta_direita') > -1) {
+        $(this).attr('src', '/assets/seta_baixo.png');
+      } else {
+        $(this).attr('src', '/assets/seta_direita.png');
+      }
+      $(this).parent().find('.casa_cambio_detalhes').toggle('slow');
+  });
+
+  function hideBloco(obj) {
+
+      var divpai = obj.closest('div[id^="id_"]');
+      var keyjson = divpai.id;
+
+      if ($("div#" + keyjson + " .bloco_casas_cambio").height() == 5) {
+          $("div#" + keyjson + " .bloco_casas_cambio").css('height', '200px');
+      } else {
+          $("div#" + keyjson + " .bloco_casas_cambio").css('height', '5px');
+      }
+      $("div#" + keyjson + " .bloco_casas_cambio").css('transition', 'all 0.5s ease-in-out');
+      $("div#" + keyjson + " .filtros").toggle('slow');
+      $("div#" + keyjson + " .listagem_casas_cambio").toggle('slow');
+  }
 
   function filtrar(nome, tipo, obj) {
 
@@ -88,6 +143,10 @@
 
       localStorage.setItem(keyjson, JSON.stringify(json));
 
+      buscarCasasDeCambio(json, keyjson);
+  }
+
+  function buscarCasasDeCambio(json, keyjson) {
       $.ajax({
           contentType: 'application/json',
           data: JSON.stringify(json),
@@ -99,14 +158,17 @@
                   $( "div#" + keyjson + " table").find('tbody')
                           .append($('<tr class="tr_moeda_'+keyjson+i+'">')
                                   .append($('<td style="width:60%">')
-                                          .text(data[i].name))
-                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' dolar_'+keyjson+'" style="display:none">')
+                                          .html('<img src="/assets/seta_direita.png" class="setinha"/>'+data[i].name+'<br/><span class="casa_cambio_bairro">'+data[i].neighborhood+'</span><br/>'+
+                                          '<div class="casa_cambio_detalhes">'+data[i].address+'<br/>'+
+                                          data[i].site+' | Contato: '+data[i].phone+' / '+data[i].email+'</div>'
+                                  ))
+                                  .append($('<td style="width:10%;vertical-align: top;" class="td_moeda_'+keyjson+' dolar_'+keyjson+'" style="display:none">')
                                           .text(data[i].dolar))
-                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' euro_'+keyjson+'" style="display:none">')
+                                  .append($('<td style="width:10%;vertical-align: top;" class="td_moeda_'+keyjson+' euro_'+keyjson+'" style="display:none">')
                                           .text(data[i].euro))
-                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' libra_'+keyjson+'" style="display:none">')
+                                  .append($('<td style="width:10%;vertical-align: top;" class="td_moeda_'+keyjson+' libra_'+keyjson+'" style="display:none">')
                                           .text(data[i].libra))
-                                  .append($('<td style="width:10%" class="td_moeda_'+keyjson+' peso_'+keyjson+'" style="display:none">')
+                                  .append($('<td style="width:10%;vertical-align: top;" class="td_moeda_'+keyjson+' peso_'+keyjson+'" style="display:none">')
                                           .text(data[i].peso))
                   );
 

@@ -1,22 +1,24 @@
 <div class="bloco_casas_cambio">
 
+    <a href="#" class="minimize_bloco"><img src="/assets/minimize.png" onclick="hideBloco(this)"/></a>
+
     <!-- picker -->
 
     <div class="filtros">
         <div class="moedas">
-            <div class="filtro_moeda" onclick="filtrar('dolar', 'moeda', this)">US$</div>
-            <div class="filtro_moeda" onclick="filtrar('euro', 'moeda', this)">Euro</div>
-            <div class="filtro_moeda" onclick="filtrar('libra', 'moeda', this)">Libra</div>
-            <div class="filtro_moeda" onclick="filtrar('peso', 'moeda', this)">Peso</div>
+            <div class="filtro_moeda dolar" onclick="filtrar('dolar', 'moeda', this)">US$</div>
+            <div class="filtro_moeda euro" onclick="filtrar('euro', 'moeda', this)">Euro</div>
+            <div class="filtro_moeda libra" onclick="filtrar('libra', 'moeda', this)">Libra</div>
+            <div class="filtro_moeda peso" onclick="filtrar('peso', 'moeda', this)">Peso</div>
         </div>
 
         <div class="tipos_pagamento">
-            <div class="filtro_pagamento" onclick="filtrar('money', 'pagamento', this)">CASH</div>
-            <div class="filtro_pagamento" onclick="filtrar('visa', 'pagamento', this)">VISA TRAVEL MONEY</div>
-            <div class="filtro_pagamento" onclick="filtrar('master', 'pagamento', this)">MASTERCARD TRAVEL</div>
+            <div class="filtro_pagamento money" onclick="filtrar('money', 'pagamento', this)">CASH</div>
+            <div class="filtro_pagamento visa" onclick="filtrar('visa', 'pagamento', this)">VISA TRAVEL MONEY</div>
+            <div class="filtro_pagamento master" onclick="filtrar('master', 'pagamento', this)">MASTERCARD TRAVEL</div>
         </div>
 
-        <div class="opcionais">
+        <div class="opcionais" style="display: none">
             <div class="bloco_opcional">
                 <div class="filtro_opcional" onclick="filtrar('frete', 'opcional', this)"></div><span>FRETE</span>
             </div>
@@ -37,10 +39,10 @@
 
     </div>
 
-
 </div>
 
 <script>
 
+  //  $( ".bloco_casas_cambio" ).resizable();
 
 </script>

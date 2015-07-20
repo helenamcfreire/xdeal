@@ -6,13 +6,11 @@ Xdeal::Application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
 
-  root :to => "home#index"
-
   match ':controller(/:action(/:id))(.:format)'
 
-  Rails.application.routes.draw do
-    resources :company
-  end
+  root :to => "home#index"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

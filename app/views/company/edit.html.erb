@@ -1,21 +1,56 @@
-<%= semantic_form_for @company, :url => url_for(:action => "update/#{@company.id}") do |f| %>
-    <%= f.inputs :name, :money_dolar, :visa_dolar, :master_dolar, :money_euro, :visa_euro, :master_euro,
-                 :money_libra, :visa_libra, :master_libra, :money_peso, :visa_peso, :master_peso %>
-    <%= f.actions %>
-<% end %>
+<div class="engloba_form">
+    <%= form_for @company, :html => {:class => ""}, :url => {:action => 'update', :id => @company.id} do |r| %>
 
+        <div class="form-group">
+            <label>Nome</label>
+            <%= r.text_field :name, :class => 'form-control input-big' %>
+        </div>
+        <div class="form-group">
+            <label>Website</label>
+            <%= r.text_field :site, :class => 'form-control input-big' %>
+        </div>
+        <div class="form-group">
+            <label>Telefone</label>
+            <%= r.text_field :phone, :class => 'form-control input-big' %>
+        </div>
+        <div class="form-group">
+            <label>Endereço</label>
+            <%= r.text_field :address, :class => 'form-control input-big' %>
+        </div>
+        <div class="form-group">
+            <label>Bairro</label>
+            <%= r.text_field :neighborhood, :class => 'form-control input-big' %>
+        </div>
+        <div class="form-group">
+            <label>E-mail</label>
+            <%= r.text_field :email, :class => 'form-control input-big' %>
+        </div>
+        <hr/>
+        <div class="form-group">
+            <label>Dinheiro | Cash</label>
+                Dólar: <%= r.text_field :money_dolar, :class => 'form-control input-number' %>
+                Euro: <%= r.text_field :money_euro, :class => 'form-control input-number' %>
+                Libra: <%= r.text_field :money_libra, :class => 'form-control input-number' %>
+                Peso: <%= r.text_field :money_peso, :class => 'form-control input-number' %>
+        </div>
+        <div class="form-group">
+            <label>Visa Travel Money</label>
+                Dólar: <%= r.text_field :visa_dolar, :class => 'form-control input-number' %>
+                Euro: <%= r.text_field :visa_euro, :class => 'form-control input-number' %>
+                Libra: <%= r.text_field :visa_libra, :class => 'form-control input-number' %>
+                Peso: <%= r.text_field :visa_peso, :class => 'form-control input-number' %>
+        </div>
+        <div class="form-group">
+            <label>Master Travel Card</label>
+                Dólar: <%= r.text_field :master_dolar, :class => 'form-control input-number' %>
+                Euro: <%= r.text_field :master_euro, :class => 'form-control input-number' %>
+                Libra: <%= r.text_field :master_libra, :class => 'form-control input-number' %>
+                Peso: <%= r.text_field :master_peso, :class => 'form-control input-number' %>
+        </div>
 
-<style>
+      <div class="form-group">
+          <%= r.submit t(:cadastrar), :class => 'btn btn-primary' %>
+      </div>
 
-  fieldset.inputs {
-      width: 960px;
-      margin: auto;
-      margin-top: 60px;
-      padding: 50px;
-  }
-
-  form {
-      margin-bottom: 50px!important;
-  }
-
-</style>
+    <% end %>
+</div>

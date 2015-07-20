@@ -159,7 +159,6 @@ DEPENDENCIES
   activeadmin!
   coffee-rails (~> 3.2.1)
   devise
-  formtastic (~> 2.3.1)
   jquery-rails (< 3)
   nokogiri
   pg

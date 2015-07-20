@@ -1,7 +1,11 @@
 class CompanyController < ApplicationController
 
+  def new
+    @company = Company.new
+  end
+
   def edit
-    @company = Company.find(21)
+    @company = Company.find(params[:id])
   end
 
   def update
