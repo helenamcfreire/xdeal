@@ -19,7 +19,9 @@
         <li>CONTATO</li>
         <li>
           <% if user_signed_in? %>
-              <%= link_to t(:ver_loja), "/company/edit/#{current_user.company.id}" %> /
+              <% unless current_user.company.nil? %>
+                <%= link_to t(:ver_loja), "/company/edit/#{current_user.company.id}" %> /
+              <% end %>
               <%= link_to t(:sair), destroy_user_session_path, :method => :delete %>
           <% else %>
               <%= link_to t(:entrar), new_user_session_path %>
