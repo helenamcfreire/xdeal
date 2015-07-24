@@ -24,6 +24,7 @@
               <% end %>
               <%= link_to t(:sair), destroy_user_session_path, :method => :delete %>
           <% else %>
+              <%= link_to t(:cadastrar2), new_user_registration_path %> /
               <%= link_to t(:entrar), new_user_session_path %>
           <% end %>
         </li>

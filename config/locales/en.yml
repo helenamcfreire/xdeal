@@ -4,6 +4,7 @@
 en:
   hello: "Hello world"
   cadastrar: "Atualizar"
+  cadastrar2: "CADASTRE-SE"
   sair: "SAIR"
   entrar: "ENTRAR"
   ver_loja: "VER LOJA"
